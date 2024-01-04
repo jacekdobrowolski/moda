@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmlns:xmi='http://www.omg.org/spec/XMI/20131001' xmlns:uml='http://www.omg.org/spec/UML/20131001'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='12.2.1.4.0'/>
+ <uml:Enumeration xmi:type='uml:Enumeration' xmi:uuid='urn:uuid:d18d43a7-8046-4b42-ae41-fc58813e0fd0'
+   isAbstract='false'
+   isFinalSpecialization='false'
+   isLeaf='false'
+   name='PaymentStatus'
+   visibility='public'>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:0272b11e-6fa6-4d40-bf7f-4bf30c01672e'
+    name='Paid'
+    visibility='public'/>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:473c8331-d44c-45fc-9e42-9fd06dff6a27'
+    name='Unpaid'
+    visibility='public'/>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:c5b0fd49-b794-44d0-bd27-b96cb946b849'
+    name='Processing'
+    visibility='public'/>
+ </uml:Enumeration>
+</xmi:XMI>

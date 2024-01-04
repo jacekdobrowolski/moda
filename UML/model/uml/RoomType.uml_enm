@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmlns:xmi='http://www.omg.org/spec/XMI/20131001' xmlns:uml='http://www.omg.org/spec/UML/20131001'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='12.2.1.4.0'/>
+ <uml:Enumeration xmi:type='uml:Enumeration' xmi:uuid='urn:uuid:e85c15ff-cf41-4120-a130-bdac8c4b528e'
+   isAbstract='false'
+   isFinalSpecialization='false'
+   isLeaf='false'
+   name='RoomType'
+   visibility='public'>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:55826356-88c6-48de-bae3-6d8a9f7d8e87'
+    name='Standard'
+    visibility='public'/>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:3cea6592-9cbf-4359-9adb-4598a3b6c072'
+    name='Premium'
+    visibility='public'/>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:ad41bed8-0e3d-4ecc-90d8-e82dca28ce6d'
+    name='SuperPremium'
+    visibility='public'/>
+ </uml:Enumeration>
+</xmi:XMI>

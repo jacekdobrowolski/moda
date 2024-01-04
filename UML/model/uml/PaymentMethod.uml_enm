@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmlns:xmi='http://www.omg.org/spec/XMI/20131001' xmlns:uml='http://www.omg.org/spec/UML/20131001'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='12.2.1.4.0'/>
+ <uml:Enumeration xmi:type='uml:Enumeration' xmi:uuid='urn:uuid:3044b6f3-d29f-42de-b1c1-e67f36cbcef8'
+   isAbstract='false'
+   isFinalSpecialization='false'
+   isLeaf='false'
+   name='PaymentMethod'
+   visibility='public'>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:6ec6e3b6-4ab0-4a06-aa90-ae941a0b1064'
+    name='OnSite'
+    visibility='public'/>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:09ca40c4-0c34-488b-9a84-e1fe23fe83e0'
+    name='BankTransfer'
+    visibility='public'/>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:4d3efa81-1d62-4924-b55a-75ccc3b7ecd9'
+    name='CreditCard'
+    visibility='public'/>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:4d15db66-8f2c-4468-bac3-72f30dd5b38e'
+    name='BLIK'
+    visibility='public'/>
+  <ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:uuid='urn:uuid:7cb66f62-080e-49b4-beb8-4bd58ecb6519'
+    name='PayPal'
+    visibility='public'/>
+ </uml:Enumeration>
+</xmi:XMI>
