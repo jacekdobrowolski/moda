@@ -33,8 +33,60 @@
       </properties>
     </column>
     <column>
-      <name>PAYMENT_ID</name>
+      <name>PAYMENT_STATUS</name>
       <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column STATUS created from UML attribute &quot;Status&quot; in UML class &quot;Payment&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>PAYMENT_METHOD</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column PAYMENT_METHOD created from UML attribute &quot;PaymentMethod&quot; in UML class &quot;Payment&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>PAYMENT_AMOUNT</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">9</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Integer">2</value>
+          </entry>
+        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
         </dataTypeID>
@@ -43,7 +95,22 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION7 created as default foreign key column for foreign key &quot;ASSOCIATION7&quot;</value>
+          <value class="java.lang.String">UML to Offline Database Transform: Column AMOUNT created from UML attribute &quot;Amount&quot; in UML class &quot;Payment&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>PAYMENT_EXECUTION_TIME</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>DATE</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column EXECUTION_TIME created from UML attribute &quot;ExecutionTime&quot; in UML class &quot;Payment&quot;</value>
         </entry>
       </properties>
     </column>
@@ -75,37 +142,11 @@
         <type>INDEX</type>
       </indexID>
     </constraint>
-    <constraint class="oracle.javatools.db.UniqueConstraint">
-      <name>RESERVATIONS_UK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PAYMENT_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>RESERVATIONS_UK1</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>RESERVATIONS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>INDEX</type>
-      </indexID>
-    </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION7</name>
+      <name>RESERVATIONS_FK1</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PAYMENT_ID</name>
+          <name>USER_ID</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>RESERVATIONS</name>
             <schemaName>UML</schemaName>
@@ -117,9 +158,9 @@
       </columnIDs>
       <enabled>true</enabled>
       <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>PAYMENTS_PK</name>
+        <name>USERS_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>PAYMENTS</name>
+          <name>USERS</name>
           <schemaName>UML</schemaName>
           <type>TABLE</type>
         </parent>
@@ -134,20 +175,6 @@
       <columnExpressions>
         <columnExpression>
           <expressionSource>RESERVATION_ID</expressionSource>
-          <orderType>ASC</orderType>
-        </columnExpression>
-      </columnExpressions>
-      <indexType>UNIQUE</indexType>
-      <schema>
-        <name>UML</name>
-      </schema>
-      <systemGenerated>true</systemGenerated>
-    </index>
-    <index>
-      <name>RESERVATIONS_UK1</name>
-      <columnExpressions>
-        <columnExpression>
-          <expressionSource>PAYMENT_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
