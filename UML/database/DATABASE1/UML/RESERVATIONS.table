@@ -132,7 +132,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>RESERVATIONS_PK</name>
+        <name>RESERVATIONS_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>RESERVATIONS</name>
           <schemaName>UML</schemaName>
@@ -171,7 +171,7 @@
   </constraints>
   <indexes>
     <index>
-      <name>RESERVATIONS_PK</name>
+      <name>RESERVATIONS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>RESERVATION_ID</expressionSource>
@@ -183,6 +183,19 @@
         <name>UML</name>
       </schema>
       <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>RESERVATIONS_USER_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>USER_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
     </index>
   </indexes>
   <properties>

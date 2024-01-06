@@ -56,7 +56,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>AMENITY_TYPES_PK</name>
+        <name>AMENITY_TYPES_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>AMENITY_TYPES</name>
           <schemaName>UML</schemaName>
@@ -69,7 +69,7 @@
   </constraints>
   <indexes>
     <index>
-      <name>AMENITY_TYPES_PK</name>
+      <name>AMENITY_TYPES_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>AMENITY_TYPE_ID</expressionSource>

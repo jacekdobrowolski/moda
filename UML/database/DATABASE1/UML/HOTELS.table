@@ -250,7 +250,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>HOTELS_PK</name>
+        <name>HOTELS_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>HOTELS</name>
           <schemaName>UML</schemaName>
@@ -263,7 +263,7 @@
   </constraints>
   <indexes>
     <index>
-      <name>HOTELS_PK</name>
+      <name>HOTELS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>HOTEL_ID</expressionSource>

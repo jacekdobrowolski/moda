@@ -86,7 +86,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>PROPERTY_VALUES_PK</name>
+        <name>PROPERTY_VALUES_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>PROPERTY_VALUES</name>
           <schemaName>UML</schemaName>
@@ -151,7 +151,33 @@
   </constraints>
   <indexes>
     <index>
-      <name>PROPERTY_VALUES_PK</name>
+      <name>PROPERTY_VALUES_AMENITY_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>AMENITY_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
+    </index>
+    <index>
+      <name>PROPERTY_VALUES_ATP_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>AMENITY_TYPE_PROPERTY_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
+    </index>
+    <index>
+      <name>PROPERTY_VALUES_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>PROPERTY_VALUE_ID</expressionSource>

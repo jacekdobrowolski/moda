@@ -167,7 +167,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>ROOMS_PK</name>
+        <name>ROOMS_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>ROOMS</name>
           <schemaName>UML</schemaName>
@@ -211,7 +211,20 @@
   </constraints>
   <indexes>
     <index>
-      <name>ROOMS_PK</name>
+      <name>ROOMS_HOTEL_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>HOTEL_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
+    </index>
+    <index>
+      <name>ROOMS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>ROOM_ID</expressionSource>

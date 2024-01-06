@@ -195,7 +195,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>ROOM_RESERVATIONS_PK</name>
+        <name>ROOM_RESERVATIONS_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>ROOM_RESERVATIONS</name>
           <schemaName>UML</schemaName>
@@ -260,7 +260,7 @@
   </constraints>
   <indexes>
     <index>
-      <name>ROOM_RESERVATIONS_PK</name>
+      <name>ROOM_RESERVATIONS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>ROOM_RESERVATION_ID</expressionSource>
@@ -272,6 +272,32 @@
         <name>UML</name>
       </schema>
       <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>ROOM_RESERVATIONS_RESERVA_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>RESERVATION_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
+    </index>
+    <index>
+      <name>ROOM_RESERVATIONS_ROOM_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>ROOM_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
     </index>
   </indexes>
   <properties>

@@ -49,6 +49,32 @@
     </column>
   </columns>
   <constraints>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>AMENITY_TYPE_PROPERTIES_PK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPE_PROPERTY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>AMENITY_TYPE_PROPERTIES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>AMENITY_TYPE_PROPERTIES_PK_IDX</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPE_PROPERTIES</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
+    </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
       <name>ASSOCIATION10</name>
       <columnIDs>
@@ -101,36 +127,23 @@
         <type>CONSTRAINT</type>
       </referenceID>
     </constraint>
-    <constraint class="oracle.javatools.db.PKConstraint">
-      <name>AMENITY_TYPE_PROPERTIES_PK</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_TYPE_PROPERTY_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>AMENITY_TYPE_PROPERTIES</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>AMENITY_TYPE_PROPERTIES_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_TYPE_PROPERTIES</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>INDEX</type>
-      </indexID>
-    </constraint>
   </constraints>
   <indexes>
     <index>
-      <name>AMENITY_TYPE_PROPERTIES_PK</name>
+      <name>AMENITY_TYPE_PROPERTIES_AT_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>AMENITY_TYPE_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
+    </index>
+    <index>
+      <name>AMENITY_TYPE_PROPERTIES_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>AMENITY_TYPE_PROPERTY_ID</expressionSource>
@@ -142,6 +155,19 @@
         <name>UML</name>
       </schema>
       <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>AMENITY_TYPE_PROPERTIES_P_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>PROPERTY_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
     </index>
   </indexes>
   <properties>
