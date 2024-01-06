@@ -116,7 +116,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>OPINIONS_PK</name>
+        <name>OPINIONS_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>OPINIONS</name>
           <schemaName>UML</schemaName>
@@ -181,7 +181,20 @@
   </constraints>
   <indexes>
     <index>
-      <name>OPINIONS_PK</name>
+      <name>OPINIONS_HOTEL_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>HOTEL_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
+    </index>
+    <index>
+      <name>OPINIONS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>OPINION_ID</expressionSource>
@@ -193,6 +206,19 @@
         <name>UML</name>
       </schema>
       <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>OPINIONS_USER_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>USER_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
     </index>
   </indexes>
   <properties>

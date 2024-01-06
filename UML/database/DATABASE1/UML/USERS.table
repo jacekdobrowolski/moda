@@ -230,7 +230,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>USERS_PK</name>
+        <name>USERS_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>USERS</name>
           <schemaName>UML</schemaName>
@@ -248,7 +248,7 @@
   </constraints>
   <indexes>
     <index>
-      <name>USERS_PK</name>
+      <name>USERS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>USER_ID</expressionSource>

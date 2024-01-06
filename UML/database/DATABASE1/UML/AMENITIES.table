@@ -65,7 +65,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>AMENITIES_PK</name>
+        <name>AMENITIES_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>AMENITIES</name>
           <schemaName>UML</schemaName>
@@ -130,7 +130,33 @@
   </constraints>
   <indexes>
     <index>
-      <name>AMENITIES_PK</name>
+      <name>AMENITIES_AMENITY_TYPE_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>AMENITY_TYPE_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
+    </index>
+    <index>
+      <name>AMENITIES_HOTEL_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>HOTEL_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
+    </index>
+    <index>
+      <name>AMENITIES_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>AMENITY_ID</expressionSource>

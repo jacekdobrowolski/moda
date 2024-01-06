@@ -82,16 +82,6 @@
     </column>
   </columns>
   <constraints>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>PROPERTIES_CHK1</name>
-      <checkCondition>DATA_TYPE IN (&apos;VARCHAR2&apos;,  &apos;NUMBER&apos;)</checkCondition>
-      <enabled>true</enabled>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>PROPERTIES_CHK2</name>
-      <checkCondition>OPTIONAL IN (&apos;Y&apos;, &apos;N&apos;)</checkCondition>
-      <enabled>true</enabled>
-    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>PROPERTIES_PK</name>
       <columnIDs>
@@ -108,7 +98,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>PROPERTIES_PK</name>
+        <name>PROPERTIES_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>PROPERTIES</name>
           <schemaName>UML</schemaName>
@@ -118,10 +108,20 @@
         <type>INDEX</type>
       </indexID>
     </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>PROPERTIES_CHK1</name>
+      <checkCondition>DATA_TYPE IN (&apos;VARCHAR2&apos;,  &apos;NUMBER&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>PROPERTIES_CHK2</name>
+      <checkCondition>OPTIONAL IN (&apos;Y&apos;, &apos;N&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
   </constraints>
   <indexes>
     <index>
-      <name>PROPERTIES_PK</name>
+      <name>PROPERTIES_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>PROPERTY_ID</expressionSource>
