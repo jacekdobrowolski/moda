@@ -73,6 +73,7 @@
       <list n="technologyScope">
          <string v="UML"/>
          <string v="XML"/>
+         <string v="XML_SCHEMA"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">

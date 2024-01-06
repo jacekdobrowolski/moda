@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.example.org"
+            targetNamespace="http://www.example.org" elementFormDefault="qualified">
+  <xsd:element name="Reservations">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Reservation" type="ReservationType" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="UserType">
+    <xsd:sequence>
+      <xsd:element name="FirstName" type="NonEmptyStringType"/>
+      <xsd:element name="LastName" type="NonEmptyStringType"/>
+      <xsd:element name="Id" type="xsd:integer"/>
+      <xsd:element name="Email" type="EmailType"/>
+      <xsd:element name="PhoneNumber" type="NonEmptyStringType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReservationType">
+    <xsd:sequence>
+      <xsd:element name="User" type="UserType"/>
+      <xsd:element name="Amount" type="DecimalWithTwoPlacesType"/>
+      <xsd:element name="ExecutionTime" type="xsd:dateTime"/>
+      <xsd:element name="PymentMethod" type="PaymentMethod"/>
+      <xsd:element name="Status" type="PaymentStatus"/>
+      <xsd:element name="RoomReservations">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="RoomReservation" minOccurs="1" maxOccurs="unbounded" type="RoomReservationType"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="PaymentStatus">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Paid"/>
+      <xsd:enumeration value="Unpaid"/>
+      <xsd:enumeration value="Processing"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PaymentMethod">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OnSite"/>
+      <xsd:enumeration value="BankTransfer"/>
+      <xsd:enumeration value="CreditCard"/>
+      <xsd:enumeration value="BLIK"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="RoomReservationType">
+    <xsd:sequence>
+      <xsd:element name="StartDate" type="xsd:dateTime"/>
+      <xsd:element name="EndDate" type="xsd:dateTime"/>
+      <xsd:element name="NumberOfGuests" type="PositiveIntegerType"/>
+      <xsd:element name="BreakfastForHowMany" type="GreaterThanZeroType"/>
+      <xsd:element name="DinnersForHowMany" type="GreaterThanZeroType"/>
+      <xsd:element name="LunchesForHowMany" type="GreaterThanZeroType"/>
+      <xsd:element name="Room" type="RoomType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="RoomType">
+    <xsd:sequence>
+      <xsd:element name="NumberOfBeds" type="PositiveIntegerType"/>
+      <xsd:element name="MaxOccupancy" type="PositiveIntegerType"/>
+      <xsd:element name="PricePerNight" type="DecimalWithTwoPlacesType"/>
+      <xsd:element name="RoomNumber" type="GreaterThanZeroType"/>
+      <xsd:element name="RoomStandard" type="RoomStandard"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="RoomStandard">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Standard"/>
+      <xsd:enumeration value="Premium"/>
+      <xsd:enumeration value="SuperPremium"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="DecimalWithTwoPlacesType">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:fractionDigits value="2"/>
+      <xsd:minInclusive value="1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PositiveIntegerType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="GreaterThanZeroType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="0"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="EmailType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NonEmptyStringType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

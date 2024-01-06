@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Reservations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.example.org reservations-schema.xsd" xmlns="http://www.example.org">
+  <Reservation>
+    <User>
+      <FirstName>Jack</FirstName>
+      <LastName>Portman</LastName>
+      <Id>1</Id>
+      <Email>jack.portman@gmail.com</Email>
+      <PhoneNumber>+48456690098</PhoneNumber>
+    </User>
+    <Amount>1000.00</Amount>
+    <ExecutionTime>2002-05-30T09:00:00</ExecutionTime>
+    <PymentMethod>BLIK</PymentMethod>
+    <Status>Paid</Status>
+    <RoomReservations>
+      <RoomReservation>
+        <StartDate>2002-05-31T16:00:00</StartDate>
+        <EndDate>2002-06-02T11:00:00</EndDate>
+        <NumberOfGuests>1</NumberOfGuests>
+        <BreakfastForHowMany>1</BreakfastForHowMany>
+        <DinnersForHowMany>1</DinnersForHowMany>
+        <LunchesForHowMany>1</LunchesForHowMany>
+        <Room>
+          <NumberOfBeds>1</NumberOfBeds>
+          <MaxOccupancy>2</MaxOccupancy>
+          <PricePerNight>333.00</PricePerNight>
+          <RoomNumber>1</RoomNumber>
+          <RoomStandard>Premium</RoomStandard>
+        </Room>
+      </RoomReservation>
+    </RoomReservations>
+  </Reservation>
+</Reservations>
