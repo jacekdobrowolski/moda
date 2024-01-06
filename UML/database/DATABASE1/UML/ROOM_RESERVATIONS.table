@@ -1,0 +1,301 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
+  <name>ROOM_RESERVATIONS</name>
+  <columns>
+    <column>
+      <name>ROOM_RESERVATION_ID</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ROOM_RESERVATION_ID created as default primary key column</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>START_DATE</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>DATE</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column START_DATE created from UML attribute &quot;StartDate&quot; in UML class &quot;RoomReservation&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>END_DATE</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>DATE</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column END_DATE created from UML attribute &quot;EndDate&quot; in UML class &quot;RoomReservation&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>NUMBER_OF_GUESTS</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">2</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Integer">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column NUMBER_OF_GUESTS created from UML attribute &quot;NumberOfGuests&quot; in UML class &quot;RoomReservation&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>ROOM_ID</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION4 created as default foreign key column for foreign key &quot;ASSOCIATION4&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>RESERVATION_ID</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION5 created as default foreign key column for foreign key &quot;ASSOCIATION5&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>DINING_PACKAGE_ID</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION8 created as default foreign key column for foreign key &quot;ASSOCIATION8&quot;</value>
+        </entry>
+      </properties>
+    </column>
+  </columns>
+  <constraints>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>ROOM_RESERVATIONS_PK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>ROOM_RESERVATION_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOM_RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>ROOM_RESERVATIONS_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>ROOM_RESERVATIONS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
+    </constraint>
+    <constraint class="oracle.javatools.db.UniqueConstraint">
+      <name>ROOM_RESERVATIONS_UK1</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>DINING_PACKAGE_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOM_RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>ROOM_RESERVATIONS_UK1</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>ROOM_RESERVATIONS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>ASSOCIATION4</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>ROOM_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOM_RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>ROOMS_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>ROOMS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>ASSOCIATION5</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATION_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOM_RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>RESERVATIONS_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATIONS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>ASSOCIATION8</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>DINING_PACKAGE_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOM_RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>DINING_PACKAGES_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>DINING_PACKAGES</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+  </constraints>
+  <indexes>
+    <index>
+      <name>ROOM_RESERVATIONS_PK</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>ROOM_RESERVATION_ID</expressionSource>
+          <orderType>ASC</orderType>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>UNIQUE</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>ROOM_RESERVATIONS_UK1</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>DINING_PACKAGE_ID</expressionSource>
+          <orderType>ASC</orderType>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>UNIQUE</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>true</systemGenerated>
+    </index>
+  </indexes>
+  <properties>
+    <entry>
+      <key>Comment</key>
+      <value class="java.lang.String">UML to Offline Database Transform: Table ROOM_RESERVATIONS created from UML class &quot;RoomReservation&quot;
+UML to Offline Database Transform: Primary key constraint ROOM_RESERVATIONS_PK created by default
+UML to Offline Database Transform: Foreign key constraint ASSOCIATION4 created for UML association &quot;Association4&quot;
+UML to Offline Database Transform: Foreign key constraint ASSOCIATION5 created for UML association &quot;Association5&quot;
+UML to Offline Database Transform: Foreign key constraint ASSOCIATION8 created for UML association &quot;Association8&quot;
+UML to Offline Database Transform: Unique key constraint ROOM_RESERVATIONS_UK1 created to enforce 1:1 rule in UML association &quot;Association8&quot;</value>
+    </entry>
+    <entry>
+      <key>TableType</key>
+      <value class="oracle.javatools.db.Table$TableType">NORMAL</value>
+    </entry>
+  </properties>
+  <schema>
+    <name>UML</name>
+  </schema>
+</table>

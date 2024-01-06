@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmlns:xmi='http://www.omg.org/spec/XMI/20131001' xmlns:uml='http://www.omg.org/spec/UML/20131001'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='12.2.1.4.0'/>
+ <uml:Association xmi:type='uml:Association' xmi:uuid='urn:uuid:3cb6bda7-4c96-4f6d-946e-0eed5ec4d653'
+   isAbstract='false'
+   isDerived='false'
+   isFinalSpecialization='false'
+   isLeaf='false'
+   name='Association14'
+   visibility='public'>
+  <memberEnd href='urn:uuid:016ae2f7-7709-4a85-88dc-777ab04e2999'/>
+  <memberEnd href='urn:uuid:8fd37e73-172a-4e4c-9c73-4e8c99b7d637'/>
+  <ownedEnd xmi:type='uml:Property' xmi:uuid='urn:uuid:016ae2f7-7709-4a85-88dc-777ab04e2999'
+    isDerived='false'
+    isDerivedUnion='false'
+    isID='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name=''
+    aggregation='none'>
+   <association href='urn:uuid:3cb6bda7-4c96-4f6d-946e-0eed5ec4d653'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:da54f441-ebaa-4d20-be3d-5f5b1d6a9d3e'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:282c570c-387f-4b1c-8138-7c1e80953c98'
+     value='1'
+     visibility='public'/>
+  </ownedEnd>
+  <ownedEnd xmi:type='uml:Property' xmi:uuid='urn:uuid:8fd37e73-172a-4e4c-9c73-4e8c99b7d637'
+    isDerived='false'
+    isDerivedUnion='false'
+    isID='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name=''
+    aggregation='none'>
+   <association href='urn:uuid:3cb6bda7-4c96-4f6d-946e-0eed5ec4d653'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:fe7fca30-af94-4139-af50-edc5d0714c4d'
+     value='0'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:78f21aae-fc22-448f-b935-2dbcbaaa9573'
+     value='*'
+     visibility='public'/>
+  </ownedEnd>
+ </uml:Association>
+</xmi:XMI>
