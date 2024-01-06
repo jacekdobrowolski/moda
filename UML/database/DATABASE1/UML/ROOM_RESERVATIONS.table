@@ -103,8 +103,18 @@
       </properties>
     </column>
     <column>
-      <name>DINING_PACKAGE_ID</name>
+      <name>BREAKFAST_FOR_HOW_MANY</name>
       <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">2</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Integer">0</value>
+          </entry>
+        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
         </dataTypeID>
@@ -113,7 +123,57 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION8 created as default foreign key column for foreign key &quot;ASSOCIATION8&quot;</value>
+          <value class="java.lang.String">UML to Offline Database Transform: Column BREAKFAST_FOR_HOW_MANY created from UML attribute &quot;BreakfastForHowMany&quot; in UML class &quot;DiningPackage&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>LUNCHES_FOR_HOW_MANY</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">2</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Integer">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column LUNCHES_FOR_HOW_MANY created from UML attribute &quot;LunchesForHowMany&quot; in UML class &quot;DiningPackage&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>DINNERS_FOR_HOW_MANY</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">2</value>
+          </entry>
+          <entry>
+            <key>scale</key>
+            <value class="java.lang.Integer">0</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column DINNERS_FOR_HOW_MANY created from UML attribute &quot;DinnersForHowMany&quot; in UML class &quot;DiningPackage&quot;</value>
         </entry>
       </properties>
     </column>
@@ -136,32 +196,6 @@
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
         <name>ROOM_RESERVATIONS_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>ROOM_RESERVATIONS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>INDEX</type>
-      </indexID>
-    </constraint>
-    <constraint class="oracle.javatools.db.UniqueConstraint">
-      <name>ROOM_RESERVATIONS_UK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>DINING_PACKAGE_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>ROOM_RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>ROOM_RESERVATIONS_UK1</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>ROOM_RESERVATIONS</name>
           <schemaName>UML</schemaName>
@@ -223,32 +257,6 @@
         <type>CONSTRAINT</type>
       </referenceID>
     </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION8</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>DINING_PACKAGE_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>ROOM_RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>DINING_PACKAGES_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>DINING_PACKAGES</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
   </constraints>
   <indexes>
     <index>
@@ -256,20 +264,6 @@
       <columnExpressions>
         <columnExpression>
           <expressionSource>ROOM_RESERVATION_ID</expressionSource>
-          <orderType>ASC</orderType>
-        </columnExpression>
-      </columnExpressions>
-      <indexType>UNIQUE</indexType>
-      <schema>
-        <name>UML</name>
-      </schema>
-      <systemGenerated>true</systemGenerated>
-    </index>
-    <index>
-      <name>ROOM_RESERVATIONS_UK1</name>
-      <columnExpressions>
-        <columnExpression>
-          <expressionSource>DINING_PACKAGE_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
