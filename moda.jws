@@ -27,6 +27,8 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
    </list>
    <list n="listOfChildren">
+      <hash><url n="URL" path="DatabaseModel/DatabaseModel.jpr"/></hash>
+      <hash><url n="URL" path="ReverseLogicalModel/ReverseLogicalModel.jpr"/></hash>
       <hash><url n="URL" path="UML/UML.jpr"/></hash>
    </list>
 </jws:workspace>

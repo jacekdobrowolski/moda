@@ -1,0 +1,163 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
+  <name>AMENITY_TYPE_PROPERTIES</name>
+  <columns>
+    <column>
+      <name>AMENITY_TYPE_PROPERTY_ID</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column AMENITY_TYPE_PROPERTY_ID created as default primary key column</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>PROPERTY_ID</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION10 created as default foreign key column for foreign key &quot;ASSOCIATION10&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>AMENITY_TYPE_ID</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION11 created as default foreign key column for foreign key &quot;ASSOCIATION11&quot;</value>
+        </entry>
+      </properties>
+    </column>
+  </columns>
+  <constraints>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>ASSOCIATION10</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>PROPERTY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>AMENITY_TYPE_PROPERTIES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>PROPERTIES_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>PROPERTIES</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>ASSOCIATION11</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPE_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>AMENITY_TYPE_PROPERTIES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>AMENITY_TYPES_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPES</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>AMENITY_TYPE_PROPERTIES_PK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPE_PROPERTY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>AMENITY_TYPE_PROPERTIES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>AMENITY_TYPE_PROPERTIES_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPE_PROPERTIES</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
+    </constraint>
+  </constraints>
+  <indexes>
+    <index>
+      <name>AMENITY_TYPE_PROPERTIES_PK</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>AMENITY_TYPE_PROPERTY_ID</expressionSource>
+          <orderType>ASC</orderType>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>UNIQUE</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>true</systemGenerated>
+    </index>
+  </indexes>
+  <properties>
+    <entry>
+      <key>Comment</key>
+      <value class="java.lang.String">UML to Offline Database Transform: Table AMENITY_TYPE_PROPERTIES created from UML class &quot;AmenityTypeProperty&quot;
+UML to Offline Database Transform: Primary key constraint AMENITY_TYPE_PROPERTIES_PK created by default
+UML to Offline Database Transform: Foreign key constraint ASSOCIATION10 created for UML association &quot;Association10&quot;
+UML to Offline Database Transform: Foreign key constraint ASSOCIATION11 created for UML association &quot;Association11&quot;</value>
+    </entry>
+    <entry>
+      <key>TableType</key>
+      <value class="oracle.javatools.db.Table$TableType">NORMAL</value>
+    </entry>
+  </properties>
+  <schema>
+    <name>UML</name>
+  </schema>
+</table>
