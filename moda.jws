@@ -1,8 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <jws:workspace xmlns:jws="http://xmlns.oracle.com/ide/project">
-   <hash n="adrs-workspace-properties">
-      <value n="adrs-instance-binding" v="DefaultServer"/>
-   </hash>
    <value n="appTemplateId" v="umlApplicationTemplate"/>
    <hash n="component-versions">
       <value n="oracle.adf.share.dt.migration.jps.JaznCredStoreMigratorHelper" v="11.1.1.1.0"/>
@@ -31,4 +28,14 @@
       <hash><url n="URL" path="ReverseLogicalModel/ReverseLogicalModel.jpr"/></hash>
       <hash><url n="URL" path="UML/UML.jpr"/></hash>
    </list>
+   <hash n="oracle.jdeveloper.model.PathsConfiguration">
+      <hash n="ApplicationSrcContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="."/>
+         </list>
+      </hash>
+   </hash>
 </jws:workspace>
