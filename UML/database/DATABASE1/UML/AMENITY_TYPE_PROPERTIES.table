@@ -3,33 +3,12 @@
   <name>AMENITY_TYPE_PROPERTIES</name>
   <columns>
     <column>
-      <name>AMENITY_TYPE_PROPERTY_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column AMENITY_TYPE_PROPERTY_ID created as default primary key column</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
       <name>PROPERTY_ID</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <value class="java.lang.String">5</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -50,7 +29,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <value class="java.lang.String">4</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -71,7 +50,17 @@
       <name>AMENITY_TYPE_PROPERTIES_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_TYPE_PROPERTY_ID</name>
+          <name>PROPERTY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>AMENITY_TYPE_PROPERTIES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPE_ID</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>AMENITY_TYPE_PROPERTIES</name>
             <schemaName>UML</schemaName>
@@ -83,7 +72,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>AMENITY_TYPE_PROPERTIES_PK_IDX</name>
+        <name>AMENITY_TYPE_PROPERTIES_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>AMENITY_TYPE_PROPERTIES</name>
           <schemaName>UML</schemaName>
@@ -161,10 +150,14 @@
       <systemGenerated>false</systemGenerated>
     </index>
     <index>
-      <name>AMENITY_TYPE_PROPERTIES_PK_IDX</name>
+      <name>AMENITY_TYPE_PROPERTIES_PK</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>AMENITY_TYPE_PROPERTY_ID</expressionSource>
+          <expressionSource>PROPERTY_ID</expressionSource>
+          <orderType>ASC</orderType>
+        </columnExpression>
+        <columnExpression>
+          <expressionSource>AMENITY_TYPE_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>

@@ -3,7 +3,49 @@
   <name>PROPERTY_VALUES</name>
   <columns>
     <column>
-      <name>PROPERTY_VALUE_ID</name>
+      <name>AMENITY_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">8</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION13 created as default foreign key column for foreign key &quot;ASSOCIATION13&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>PROPERTY_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">5</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION10 created as default foreign key column for foreign key &quot;ASSOCIATION10&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>AMENITY_TYPE_ID</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -19,7 +61,7 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column PROPERTY_VALUE_ID created as default primary key column</value>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION11 created as default foreign key column for foreign key &quot;ASSOCIATION11&quot;</value>
         </entry>
       </properties>
     </column>
@@ -44,55 +86,33 @@
         </entry>
       </properties>
     </column>
-    <column>
-      <name>AMENITY_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION13 created as default foreign key column for foreign key &quot;ASSOCIATION13&quot;</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>AMENITY_TYPE_PROPERTY_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION16 created as default foreign key column for foreign key &quot;ASSOCIATION16&quot;</value>
-        </entry>
-      </properties>
-    </column>
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>PROPERTY_VALUES_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PROPERTY_VALUE_ID</name>
+          <name>AMENITY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>PROPERTY_VALUES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>PROPERTY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>PROPERTY_VALUES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPE_ID</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>PROPERTY_VALUES</name>
             <schemaName>UML</schemaName>
@@ -141,10 +161,20 @@
       </referenceID>
     </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION16</name>
+      <name>PROPERTY_VALUES_FK1</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_TYPE_PROPERTY_ID</name>
+          <name>PROPERTY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>PROPERTY_VALUES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_TYPE_ID</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>PROPERTY_VALUES</name>
             <schemaName>UML</schemaName>
@@ -169,23 +199,10 @@
   </constraints>
   <indexes>
     <index>
-      <name>PROPERTY_VALUES_AMENITY_IDX</name>
+      <name>PROPERTY_VALUES_AT_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>AMENITY_ID</expressionSource>
-        </columnExpression>
-      </columnExpressions>
-      <indexType>NORMAL</indexType>
-      <schema>
-        <name>UML</name>
-      </schema>
-      <systemGenerated>false</systemGenerated>
-    </index>
-    <index>
-      <name>PROPERTY_VALUES_ATP_IDX</name>
-      <columnExpressions>
-        <columnExpression>
-          <expressionSource>AMENITY_TYPE_PROPERTY_ID</expressionSource>
+          <expressionSource>AMENITY_TYPE_ID</expressionSource>
         </columnExpression>
       </columnExpressions>
       <indexType>NORMAL</indexType>
@@ -198,7 +215,15 @@
       <name>PROPERTY_VALUES_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>PROPERTY_VALUE_ID</expressionSource>
+          <expressionSource>AMENITY_ID</expressionSource>
+          <orderType>ASC</orderType>
+        </columnExpression>
+        <columnExpression>
+          <expressionSource>PROPERTY_ID</expressionSource>
+          <orderType>ASC</orderType>
+        </columnExpression>
+        <columnExpression>
+          <expressionSource>AMENITY_TYPE_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
@@ -207,6 +232,19 @@
         <name>UML</name>
       </schema>
       <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>PROPERTY_VALUES_PROPERTY_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>PROPERTY_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
     </index>
   </indexes>
   <properties>
