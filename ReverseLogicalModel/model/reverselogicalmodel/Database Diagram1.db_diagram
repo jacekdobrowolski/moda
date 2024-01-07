@@ -735,7 +735,7 @@
             </contained>
             <contained xmi:type='DI:GraphNode' xmi:id='ida7ea3d39-4402-4f25-b2da-32ba1249c478'>
               <property xmi:type='DI:Property' key='id' value='ObjectText'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='178.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='230.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -1081,7 +1081,7 @@
             </contained>
             <contained xmi:type='DI:GraphNode' xmi:id='id240bba9f-bff4-4694-9d60-8a8378eddc0d'>
               <property xmi:type='DI:Property' key='id' value='ObjectText'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='292.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='517.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -1675,7 +1675,7 @@
             </contained>
             <contained xmi:type='DI:GraphNode' xmi:id='ida6429afc-348d-4cb0-850f-4bfb55bee29f'>
               <property xmi:type='DI:Property' key='id' value='ObjectText'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='321.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='324.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -1725,7 +1725,7 @@
             </contained>
             <contained xmi:type='DI:GraphNode' xmi:id='id877ea230-bf5b-4f99-8ddc-9c3767de78fc'>
               <property xmi:type='DI:Property' key='id' value='ObjectText'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='344.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='485.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -1923,7 +1923,7 @@
             </contained>
             <contained xmi:type='DI:GraphNode' xmi:id='idd03b7782-1e5d-4e59-a71d-e390e1e83580'>
               <property xmi:type='DI:Property' key='id' value='ObjectText'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='204.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='304.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>
@@ -2121,7 +2121,7 @@
             </contained>
             <contained xmi:type='DI:GraphNode' xmi:id='idccde7e0a-f0f2-4af4-9195-4f105793cae2'>
               <property xmi:type='DI:Property' key='id' value='ObjectText'/>
-              <property xmi:type='DI:Property' key='preferredWidth' value='264.0'/>
+              <property xmi:type='DI:Property' key='preferredWidth' value='301.0'/>
               <property xmi:type='DI:Property' key='visible' value='true'/>
               <property xmi:type='DI:Property' key='editable' value='true'/>
               <property xmi:type='DI:Property' key='fixedWidth' value='false'/>

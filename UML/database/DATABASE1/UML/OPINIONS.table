@@ -125,31 +125,10 @@
     </column>
   </columns>
   <constraints>
-    <constraint class="oracle.javatools.db.PKConstraint">
-      <name>OPINIONS_PK</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>OPINION_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>OPINIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>OPINIONS_CHK1</name>
+      <checkCondition>RATING BETWEEN 0 AND 5</checkCondition>
       <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>OPINIONS_PK_IDX</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>OPINIONS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>INDEX</type>
-      </indexID>
     </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
       <name>ASSOCIATION2</name>
@@ -167,7 +146,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>HOTELS_PK</name>
+        <name>HOTELS_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>HOTELS</name>
           <schemaName>UML</schemaName>
@@ -203,10 +182,31 @@
         <type>CONSTRAINT</type>
       </referenceID>
     </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>OPINIONS_CHK1</name>
-      <checkCondition>RATING BETWEEN 0 AND 5</checkCondition>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>OPINIONS_PK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>OPINION_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>OPINIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
       <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>OPINIONS_PK_IDX</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>OPINIONS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
     </constraint>
   </constraints>
   <indexes>
@@ -227,7 +227,7 @@
       <name>OPINIONS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>OPINION_ID</expressionSource>
+          <expressionSource>OPINION_ID, HOTEL_ID, USER_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>

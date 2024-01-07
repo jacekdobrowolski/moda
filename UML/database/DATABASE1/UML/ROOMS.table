@@ -156,6 +156,37 @@
     </column>
   </columns>
   <constraints>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>ROOMS_CHK1</name>
+      <checkCondition>ROOM_STANDARD IN (&apos;Standard&apos;, &apos;Premium&apos;, &apos;SuperPremium&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>ASSOCIATION3</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>HOTEL_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOMS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>HOTELS_PK_IDX</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>HOTELS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>ROOMS_PK</name>
       <columnIDs>
@@ -182,37 +213,6 @@
         <type>INDEX</type>
       </indexID>
     </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION3</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>HOTEL_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>ROOMS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>HOTELS_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>HOTELS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>ROOMS_CHK1</name>
-      <checkCondition>ROOM_STANDARD IN (&apos;Standard&apos;, &apos;Premium&apos;, &apos;SuperPremium&apos;)</checkCondition>
-      <enabled>true</enabled>
-    </constraint>
   </constraints>
   <indexes>
     <index>
@@ -232,7 +232,7 @@
       <name>ROOMS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>ROOM_ID</expressionSource>
+          <expressionSource>ROOM_ID, HOTEL_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
