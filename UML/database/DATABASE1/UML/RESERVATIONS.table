@@ -50,12 +50,12 @@
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>size</key>
-            <value class="java.lang.Long">20</value>
+            <key>precision</key>
+            <value class="java.lang.String">3</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
+          <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -71,12 +71,12 @@
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>size</key>
-            <value class="java.lang.Long">20</value>
+            <key>precision</key>
+            <value class="java.lang.String">3</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
+          <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -129,32 +129,6 @@
     </column>
   </columns>
   <constraints>
-    <constraint class="oracle.javatools.db.PKConstraint">
-      <name>RESERVATIONS_PK</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>RESERVATION_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>RESERVATIONS_PK_IDX</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>RESERVATIONS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>INDEX</type>
-      </indexID>
-    </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
       <name>RESERVATIONS_FK1</name>
       <columnIDs>
@@ -181,15 +155,83 @@
         <type>CONSTRAINT</type>
       </referenceID>
     </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>RESERVATIONS_CHK1</name>
-      <checkCondition>PAYMENT_STATUS IN (&apos;Paid&apos;, &apos;Unpaid&apos;, &apos;Processing&apos;)</checkCondition>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>RESERVATIONS_FK2</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATION_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
       <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>PAYMENT_STATUS_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>PAYMENT_STATUS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
     </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>RESERVATIONS_CHK2</name>
-      <checkCondition> PAYMENT_METHOD IN (&apos;OnSite&apos;, &apos;BankTransfer&apos;, &apos;CreditCard&apos;, &apos;BLIK&apos;)</checkCondition>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>RESERVATIONS_FK3</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATION_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
       <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>PAYMENT_METHOD_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>PAYMENT_METHODS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>RESERVATIONS_PK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATION_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>RESERVATIONS_PK_IDX</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATIONS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
     </constraint>
   </constraints>
   <indexes>
@@ -197,7 +239,7 @@
       <name>RESERVATIONS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>RESERVATION_ID, USER_ID</expressionSource>
+          <expressionSource>RESERVATION_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>

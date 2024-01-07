@@ -196,6 +196,58 @@
         <type>INDEX</type>
       </indexID>
     </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>ROOM_RESERVATIONS_FK1</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>ROOM_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOM_RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>ROOMS_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>ROOMS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>ROOM_RESERVATIONS_FK2</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATION_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOM_RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>RESERVATIONS_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATIONS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
   </constraints>
   <indexes>
     <index>
