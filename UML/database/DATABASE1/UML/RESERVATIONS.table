@@ -196,7 +196,7 @@
       <name>RESERVATIONS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>RESERVATION_ID</expressionSource>
+          <expressionSource>RESERVATION_ID, USER_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>

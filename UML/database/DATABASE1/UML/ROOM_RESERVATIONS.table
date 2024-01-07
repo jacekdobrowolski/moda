@@ -3,7 +3,7 @@
   <name>ROOM_RESERVATIONS</name>
   <columns>
     <column>
-      <name>ROOM_RESERVATION_ID</name>
+      <name>RESERVATION_ID</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -19,7 +19,28 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ROOM_RESERVATION_ID created as default primary key column</value>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION5 created as default foreign key column for foreign key &quot;ASSOCIATION5&quot;</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>ROOM_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>precision</key>
+            <value class="java.lang.String">10</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>true</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION4 created as default foreign key column for foreign key &quot;ASSOCIATION4&quot;</value>
         </entry>
       </properties>
     </column>
@@ -71,48 +92,6 @@
         <entry>
           <key>Comment</key>
           <value class="java.lang.String">UML to Offline Database Transform: Column NUMBER_OF_GUESTS created from UML attribute &quot;NumberOfGuests&quot; in UML class &quot;RoomReservation&quot;</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>ROOM_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION4 created as default foreign key column for foreign key &quot;ASSOCIATION4&quot;</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RESERVATION_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION5 created as default foreign key column for foreign key &quot;ASSOCIATION5&quot;</value>
         </entry>
       </properties>
     </column>
@@ -185,7 +164,17 @@
       <name>ROOM_RESERVATIONS_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>ROOM_RESERVATION_ID</name>
+          <name>ROOM_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>ROOM_RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>RESERVATION_ID</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>ROOM_RESERVATIONS</name>
             <schemaName>UML</schemaName>
@@ -265,7 +254,7 @@
       <name>ROOM_RESERVATIONS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>ROOM_RESERVATION_ID</expressionSource>
+          <expressionSource>RESERVATION_ID, ROOM_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
@@ -274,19 +263,6 @@
         <name>UML</name>
       </schema>
       <systemGenerated>true</systemGenerated>
-    </index>
-    <index>
-      <name>ROOM_RESERVATIONS_RESERVA_IDX</name>
-      <columnExpressions>
-        <columnExpression>
-          <expressionSource>RESERVATION_ID</expressionSource>
-        </columnExpression>
-      </columnExpressions>
-      <indexType>NORMAL</indexType>
-      <schema>
-        <name>UML</name>
-      </schema>
-      <systemGenerated>false</systemGenerated>
     </index>
     <index>
       <name>ROOM_RESERVATIONS_ROOM_IDX</name>

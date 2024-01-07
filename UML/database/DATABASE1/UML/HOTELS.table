@@ -262,7 +262,7 @@
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.PKConstraint">
-      <name>HOTELS_PK</name>
+      <name>HOTELS_PK_IDX</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>HOTEL_ID</name>
@@ -288,7 +288,7 @@
       </indexID>
     </constraint>
     <constraint class="oracle.javatools.db.UniqueConstraint">
-      <name>HOTELS_UK1</name>
+      <name>HOTELS_EMAIL_UQ</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>EMAIL</name>
@@ -300,6 +300,22 @@
           <schemaName>UML</schemaName>
           <type>COLUMN</type>
         </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>HOTELS_EMAIL_IDX</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>HOTELS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
+    </constraint>
+    <constraint class="oracle.javatools.db.UniqueConstraint">
+      <name>HOTELS_PHONE_NUMBER_UQ</name>
+      <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>PHONE_NUMBER</name>
           <parent class="oracle.javatools.db.NameBasedID">
@@ -313,7 +329,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>HOTELS_UK1</name>
+        <name>HOTELS_PHONE_NUMBER_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>HOTELS</name>
           <schemaName>UML</schemaName>
@@ -324,17 +340,22 @@
       </indexID>
     </constraint>
     <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>HOTELS_CHK1</name>
+      <name>HOTELS_EMAIL_CHK</name>
+      <checkCondition>REGEXP_LIKE(Email, &apos;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>HOTELS_RATING_CHK</name>
       <checkCondition>RATING BETWEEN 0 AND 5</checkCondition>
       <enabled>true</enabled>
     </constraint>
   </constraints>
   <indexes>
     <index>
-      <name>HOTELS_PK_IDX</name>
+      <name>HOTELS_EMAIL_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>HOTEL_ID</expressionSource>
+          <expressionSource>EMAIL</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
@@ -345,12 +366,8 @@
       <systemGenerated>true</systemGenerated>
     </index>
     <index>
-      <name>HOTELS_UK1</name>
+      <name>HOTELS_PHONE_NUMBER_IDX</name>
       <columnExpressions>
-        <columnExpression>
-          <expressionSource>EMAIL</expressionSource>
-          <orderType>ASC</orderType>
-        </columnExpression>
         <columnExpression>
           <expressionSource>PHONE_NUMBER</expressionSource>
           <orderType>ASC</orderType>
@@ -361,6 +378,19 @@
         <name>UML</name>
       </schema>
       <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>HOTELS_PK_IDX</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>HOTEL_ID</expressionSource>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>NORMAL</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>false</systemGenerated>
     </index>
   </indexes>
   <properties>

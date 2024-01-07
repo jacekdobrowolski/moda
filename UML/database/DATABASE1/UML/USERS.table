@@ -220,16 +220,6 @@
     </column>
   </columns>
   <constraints>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>USERS_CHK1</name>
-      <checkCondition>Gender IN (&apos;Female&apos;, &apos;Male&apos;)</checkCondition>
-      <enabled>true</enabled>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>USERS_CHK2</name>
-      <checkCondition>REGEXP_LIKE(Email, &apos;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&apos;)</checkCondition>
-      <enabled>true</enabled>
-    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>USERS_PK</name>
       <columnIDs>
@@ -256,41 +246,15 @@
         <type>INDEX</type>
       </indexID>
     </constraint>
-    <constraint class="oracle.javatools.db.UniqueConstraint">
-      <name>USERS_UK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>EMAIL</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>USERS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PHONE_NUMBER</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>USERS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>USERS_CHK1</name>
+      <checkCondition>Gender IN (&apos;Female&apos;, &apos;Male&apos;)</checkCondition>
       <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>USERS_UK1</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>USERS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>INDEX</type>
-      </indexID>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>USERS_CHK2</name>
+      <checkCondition>REGEXP_LIKE(Email, &apos;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&apos;)</checkCondition>
+      <enabled>true</enabled>
     </constraint>
   </constraints>
   <indexes>
@@ -299,24 +263,6 @@
       <columnExpressions>
         <columnExpression>
           <expressionSource>USER_ID</expressionSource>
-          <orderType>ASC</orderType>
-        </columnExpression>
-      </columnExpressions>
-      <indexType>UNIQUE</indexType>
-      <schema>
-        <name>UML</name>
-      </schema>
-      <systemGenerated>true</systemGenerated>
-    </index>
-    <index>
-      <name>USERS_UK1</name>
-      <columnExpressions>
-        <columnExpression>
-          <expressionSource>EMAIL</expressionSource>
-          <orderType>ASC</orderType>
-        </columnExpression>
-        <columnExpression>
-          <expressionSource>PHONE_NUMBER</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
