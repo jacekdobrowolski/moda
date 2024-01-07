@@ -5,12 +5,6 @@
     <column>
       <name>HOTEL_ID</name>
       <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
-          </entry>
-        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
         </dataTypeID>
@@ -76,12 +70,6 @@
     <column>
       <name>RATING</name>
       <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">1</value>
-          </entry>
-        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
         </dataTypeID>
@@ -93,21 +81,6 @@
           <value class="java.lang.String">UML to Offline Database Transform: Column RATING created from UML attribute &quot;Rating&quot; in UML class &quot;Hotel&quot;</value>
         </entry>
       </properties>
-    </column>
-    <column>
-      <name>PHONE_NUMBER</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">16</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
     </column>
     <column>
       <name>STREET</name>
@@ -140,7 +113,7 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Integer">16</value>
+            <value class="java.lang.Long">6</value>
           </entry>
           <entry>
             <key>unit</key>
@@ -251,7 +224,7 @@
           <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
-      <notNull>false</notNull>
+      <notNull>true</notNull>
       <properties>
         <entry>
           <key>Comment</key>
@@ -287,47 +260,6 @@
         <type>INDEX</type>
       </indexID>
     </constraint>
-    <constraint class="oracle.javatools.db.UniqueConstraint">
-      <name>HOTELS_UK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>EMAIL</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>HOTELS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PHONE_NUMBER</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>HOTELS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>HOTELS_UK1</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>HOTELS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>INDEX</type>
-      </indexID>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>HOTELS_CHK1</name>
-      <checkCondition>RATING BETWEEN 0 AND 5</checkCondition>
-      <enabled>true</enabled>
-    </constraint>
   </constraints>
   <indexes>
     <index>
@@ -335,24 +267,6 @@
       <columnExpressions>
         <columnExpression>
           <expressionSource>HOTEL_ID</expressionSource>
-          <orderType>ASC</orderType>
-        </columnExpression>
-      </columnExpressions>
-      <indexType>UNIQUE</indexType>
-      <schema>
-        <name>UML</name>
-      </schema>
-      <systemGenerated>true</systemGenerated>
-    </index>
-    <index>
-      <name>HOTELS_UK1</name>
-      <columnExpressions>
-        <columnExpression>
-          <expressionSource>EMAIL</expressionSource>
-          <orderType>ASC</orderType>
-        </columnExpression>
-        <columnExpression>
-          <expressionSource>PHONE_NUMBER</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
