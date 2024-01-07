@@ -8,7 +8,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <value class="java.lang.String">7</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -36,7 +36,6 @@
           <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
-      <default class="java.lang.String">ROOM_RESERVATION_ID_SEQ.NEXTVAL</default>
       <notNull>true</notNull>
       <properties>
         <entry>
@@ -93,48 +92,6 @@
         <entry>
           <key>Comment</key>
           <value class="java.lang.String">UML to Offline Database Transform: Column NUMBER_OF_GUESTS created from UML attribute &quot;NumberOfGuests&quot; in UML class &quot;RoomReservation&quot;</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>ROOM_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION4 created as default foreign key column for foreign key &quot;ASSOCIATION4&quot;</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>RESERVATION_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>true</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">UML to Offline Database Transform: Column ASSOCIATION5 created as default foreign key column for foreign key &quot;ASSOCIATION5&quot;</value>
         </entry>
       </properties>
     </column>
@@ -239,65 +196,17 @@
         <type>INDEX</type>
       </indexID>
     </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION4</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>ROOM_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>ROOM_RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>ROOMS_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>ROOMS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION5</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>RESERVATION_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>ROOM_RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>RESERVATIONS_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>RESERVATIONS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
   </constraints>
   <indexes>
     <index>
       <name>ROOM_RESERVATIONS_PK_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>RESERVATION_ID, ROOM_ID</expressionSource>
+          <expressionSource>RESERVATION_ID</expressionSource>
+          <orderType>ASC</orderType>
+        </columnExpression>
+        <columnExpression>
+          <expressionSource>ROOM_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
