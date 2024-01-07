@@ -182,12 +182,12 @@
     </constraint>
     <constraint class="oracle.javatools.db.CheckConstraint">
       <name>RESERVATIONS_CHK1</name>
-      <checkCondition>PAYMENT_STATUS IN (&apos;Oplacone&apos;, &apos;Nieoplacone&apos;, &apos;Przetwarzanie&apos;)</checkCondition>
+      <checkCondition>PAYMENT_STATUS IN (&apos;Paid&apos;, &apos;Unpaid&apos;, &apos;Processing&apos;)</checkCondition>
       <enabled>true</enabled>
     </constraint>
     <constraint class="oracle.javatools.db.CheckConstraint">
       <name>RESERVATIONS_CHK2</name>
-      <checkCondition> PAYMENT_METHOD IN (&apos;NaMiejscu&apos;, &apos;Przelew&apos;, &apos;Karta&apos;, &apos;Blik&apos;, &apos;PayPal&apos;)</checkCondition>
+      <checkCondition> PAYMENT_METHOD IN (&apos;OnSite&apos;, &apos;BankTransfer&apos;, &apos;CreditCard&apos;, &apos;BLIK&apos;)</checkCondition>
       <enabled>true</enabled>
     </constraint>
   </constraints>

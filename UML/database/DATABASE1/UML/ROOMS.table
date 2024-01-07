@@ -66,7 +66,7 @@
       </properties>
     </column>
     <column>
-      <name>ROOM_TYPE</name>
+      <name>ROOM_STANDARD</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -209,7 +209,7 @@
     </constraint>
     <constraint class="oracle.javatools.db.CheckConstraint">
       <name>ROOMS_CHK1</name>
-      <checkCondition> ROOM_TYPE IN (&apos;Standard&apos;, &apos;Premium&apos;, &apos;SuperPremium&apos;)</checkCondition>
+      <checkCondition>ROOM_STANDARD IN (&apos;Standard&apos;, &apos;Premium&apos;, &apos;SuperPremium&apos;)</checkCondition>
       <enabled>true</enabled>
     </constraint>
   </constraints>

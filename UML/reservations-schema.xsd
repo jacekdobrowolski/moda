@@ -10,20 +10,20 @@
   </xsd:element>
   <xsd:complexType name="UserType">
     <xsd:sequence>
-      <xsd:element name="FirstName" type="NonEmptyStringType"/>
-      <xsd:element name="LastName" type="NonEmptyStringType"/>
-      <xsd:element name="Id" type="xsd:integer"/>
+      <xsd:element name="FirstName" type="NameStringType"/>
+      <xsd:element name="LastName" type="NameStringType"/>
+      <xsd:element name="UserId" type="IdType"/>
       <xsd:element name="Email" type="EmailType"/>
-      <xsd:element name="PhoneNumber" type="NonEmptyStringType"/>
+      <xsd:element name="PhoneNumber" type="PhoneNumberType"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="ReservationType">
     <xsd:sequence>
       <xsd:element name="User" type="UserType"/>
-      <xsd:element name="Amount" type="DecimalWithTwoPlacesType"/>
-      <xsd:element name="ExecutionTime" type="xsd:dateTime"/>
+      <xsd:element name="PaymentAmount" type="PaymentAmountType"/>
+      <xsd:element name="PaymentExecutionTime" type="xsd:dateTime"/>
       <xsd:element name="PymentMethod" type="PaymentMethod"/>
-      <xsd:element name="Status" type="PaymentStatus"/>
+      <xsd:element name="PaymentStatus" type="PaymentStatus"/>
       <xsd:element name="RoomReservations">
         <xsd:complexType>
           <xsd:sequence>
@@ -31,6 +31,7 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+      <xsd:element name="ReservationId" type="IdType"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="PaymentStatus">
@@ -52,20 +53,22 @@
     <xsd:sequence>
       <xsd:element name="StartDate" type="xsd:dateTime"/>
       <xsd:element name="EndDate" type="xsd:dateTime"/>
-      <xsd:element name="NumberOfGuests" type="PositiveIntegerType"/>
-      <xsd:element name="BreakfastForHowMany" type="GreaterThanZeroType"/>
-      <xsd:element name="DinnersForHowMany" type="GreaterThanZeroType"/>
-      <xsd:element name="LunchesForHowMany" type="GreaterThanZeroType"/>
+      <xsd:element name="NumberOfGuests" type="RoomQuantityType"/>
+      <xsd:element name="BreakfastForHowMany" type="RoomQuantityType"/>
+      <xsd:element name="DinnersForHowMany" type="RoomQuantityType"/>
+      <xsd:element name="LunchesForHowMany" type="RoomQuantityType"/>
       <xsd:element name="Room" type="RoomType"/>
+      <xsd:element name="RoomReservationId" type="IdType"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:complexType name="RoomType">
     <xsd:sequence>
-      <xsd:element name="NumberOfBeds" type="PositiveIntegerType"/>
-      <xsd:element name="MaxOccupancy" type="PositiveIntegerType"/>
-      <xsd:element name="PricePerNight" type="DecimalWithTwoPlacesType"/>
-      <xsd:element name="RoomNumber" type="GreaterThanZeroType"/>
+      <xsd:element name="BedQuantity" type="RoomQuantityType"/>
+      <xsd:element name="MaxOccupancy" type="MaxOccupancyType"/>
+      <xsd:element name="PricePerNight" type="PricePerNightType"/>
+      <xsd:element name="RoomNumber" type="RoomNumberType"/>
       <xsd:element name="RoomStandard" type="RoomStandard"/>
+      <xsd:element name="RoomId" type="IdType"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:simpleType name="RoomStandard">
@@ -75,30 +78,60 @@
       <xsd:enumeration value="SuperPremium"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="DecimalWithTwoPlacesType">
+  <xsd:simpleType name="PaymentAmountType">
     <xsd:restriction base="xsd:decimal">
       <xsd:fractionDigits value="2"/>
       <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="9999999"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="PositiveIntegerType">
-    <xsd:restriction base="xsd:integer">
+  <xsd:simpleType name="PricePerNightType">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:fractionDigits value="2"/>
       <xsd:minInclusive value="1"/>
+      <xsd:maxInclusive value="9999"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="GreaterThanZeroType">
+  <xsd:simpleType name="RoomQuantityType">
     <xsd:restriction base="xsd:integer">
       <xsd:minInclusive value="0"/>
+      <xsd:maxInclusive value="99"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RoomNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="10"/>
     </xsd:restriction>
   </xsd:simpleType>
   <xsd:simpleType name="EmailType">
     <xsd:restriction base="xsd:string">
       <xsd:pattern value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"/>
+      <xsd:maxLength value="50"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:simpleType name="NonEmptyStringType">
+  <xsd:simpleType name="NameStringType">
     <xsd:restriction base="xsd:string">
       <xsd:minLength value="1"/>
+      <xsd:maxLength value="30"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="PhoneNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="16"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="IdType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="0"/>
+      <xsd:maxInclusive value="9999999"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+    <xsd:simpleType name="MaxOccupancyType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:minInclusive value="0"/>
+      <xsd:maxInclusive value="999"/>
     </xsd:restriction>
   </xsd:simpleType>
 </xsd:schema>
