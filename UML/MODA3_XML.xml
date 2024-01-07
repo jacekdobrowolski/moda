@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Reservations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xsi:schemaLocation="http://www.example.org reservations-schema.xsd" xmlns="http://www.example.org">
+              xsi:schemaLocation="http://www.example.org MODA3_XMLSchema.xsd" xmlns="http://www.example.org">
   <Reservation>
     <User>
       <FirstName>Jack</FirstName>

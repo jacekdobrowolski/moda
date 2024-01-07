@@ -220,6 +220,16 @@
     </column>
   </columns>
   <constraints>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>USERS_CHK1</name>
+      <checkCondition>Gender IN (&apos;Female&apos;, &apos;Male&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>USERS_CHK2</name>
+      <checkCondition>REGEXP_LIKE(Email, &apos;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>USERS_PK</name>
       <columnIDs>
@@ -281,11 +291,6 @@
         <schemaName>UML</schemaName>
         <type>INDEX</type>
       </indexID>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>USERS_CHK1</name>
-      <checkCondition>Gender IN (&apos;Female&apos;, &apos;Male&apos;)</checkCondition>
-      <enabled>true</enabled>
     </constraint>
   </constraints>
   <indexes>
