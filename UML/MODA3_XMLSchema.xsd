@@ -9,20 +9,20 @@
     </xsd:complexType>
   </xsd:element>
   <xsd:complexType name="UserType">
-    <xsd:sequence>
+    <xsd:all>
       <xsd:element name="FirstName" type="NameStringType"/>
       <xsd:element name="LastName" type="NameStringType"/>
       <xsd:element name="UserId" type="IdType"/>
       <xsd:element name="Email" type="EmailType"/>
       <xsd:element name="PhoneNumber" type="PhoneNumberType"/>
-    </xsd:sequence>
+    </xsd:all>
   </xsd:complexType>
   <xsd:complexType name="ReservationType">
-    <xsd:sequence>
+    <xsd:all>
       <xsd:element name="User" type="UserType"/>
       <xsd:element name="PaymentAmount" type="PaymentAmountType"/>
       <xsd:element name="PaymentExecutionTime" type="xsd:dateTime"/>
-      <xsd:element name="PymentMethod" type="PaymentMethod"/>
+      <xsd:element name="PaymentMethod" type="PaymentMethod"/>
       <xsd:element name="PaymentStatus" type="PaymentStatus"/>
       <xsd:element name="RoomReservations">
         <xsd:complexType>
@@ -32,7 +32,29 @@
         </xsd:complexType>
       </xsd:element>
       <xsd:element name="ReservationId" type="IdType"/>
-    </xsd:sequence>
+    </xsd:all>
+  </xsd:complexType>
+    <xsd:complexType name="RoomReservationType">
+    <xsd:all>
+      <xsd:element name="StartDate" type="xsd:dateTime"/>
+      <xsd:element name="EndDate" type="xsd:dateTime"/>
+      <xsd:element name="NumberOfGuests" type="RoomQuantityType"/>
+      <xsd:element name="BreakfastForHowMany" type="RoomQuantityType"/>
+      <xsd:element name="DinnersForHowMany" type="RoomQuantityType"/>
+      <xsd:element name="LunchesForHowMany" type="RoomQuantityType"/>
+      <xsd:element name="Room" type="RoomType"/>
+      <xsd:element name="RoomReservationId" type="IdType"/>
+    </xsd:all>
+  </xsd:complexType>
+  <xsd:complexType name="RoomType">
+    <xsd:all>
+      <xsd:element name="BedQuantity" type="RoomQuantityType"/>
+      <xsd:element name="MaxOccupancy" type="MaxOccupancyType"/>
+      <xsd:element name="PricePerNight" type="PricePerNightType"/>
+      <xsd:element name="RoomNumber" type="RoomNumberType"/>
+      <xsd:element name="RoomStandard" type="RoomStandard"/>
+      <xsd:element name="RoomId" type="IdType"/>
+    </xsd:all>
   </xsd:complexType>
   <xsd:simpleType name="PaymentStatus">
     <xsd:restriction base="xsd:string">
@@ -49,28 +71,6 @@
       <xsd:enumeration value="BLIK"/>
     </xsd:restriction>
   </xsd:simpleType>
-  <xsd:complexType name="RoomReservationType">
-    <xsd:sequence>
-      <xsd:element name="StartDate" type="xsd:dateTime"/>
-      <xsd:element name="EndDate" type="xsd:dateTime"/>
-      <xsd:element name="NumberOfGuests" type="RoomQuantityType"/>
-      <xsd:element name="BreakfastForHowMany" type="RoomQuantityType"/>
-      <xsd:element name="DinnersForHowMany" type="RoomQuantityType"/>
-      <xsd:element name="LunchesForHowMany" type="RoomQuantityType"/>
-      <xsd:element name="Room" type="RoomType"/>
-      <xsd:element name="RoomReservationId" type="IdType"/>
-    </xsd:sequence>
-  </xsd:complexType>
-  <xsd:complexType name="RoomType">
-    <xsd:sequence>
-      <xsd:element name="BedQuantity" type="RoomQuantityType"/>
-      <xsd:element name="MaxOccupancy" type="MaxOccupancyType"/>
-      <xsd:element name="PricePerNight" type="PricePerNightType"/>
-      <xsd:element name="RoomNumber" type="RoomNumberType"/>
-      <xsd:element name="RoomStandard" type="RoomStandard"/>
-      <xsd:element name="RoomId" type="IdType"/>
-    </xsd:sequence>
-  </xsd:complexType>
   <xsd:simpleType name="RoomStandard">
     <xsd:restriction base="xsd:string">
       <xsd:enumeration value="Standard"/>
