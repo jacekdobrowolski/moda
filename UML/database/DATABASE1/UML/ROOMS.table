@@ -212,7 +212,7 @@
       <name>ROOMS_FK1</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>ROOM_ID</name>
+          <name>ROOM_STANDARD</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>ROOMS</name>
             <schemaName>UML</schemaName>
