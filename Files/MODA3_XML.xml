@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Reservations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://www.example.org MODA3_XMLSchema.xsd" xmlns="http://www.example.org">
+  <Reservation>
+    <User>
+      <FirstName>Jack</FirstName>
+      <LastName>Portman</LastName>
+      <UserId>1</UserId>
+      <Email>jack.portman@gmail.com</Email>
+      <PhoneNumber>+48456690098</PhoneNumber>
+    </User>
+    <PaymentAmount>1000.00</PaymentAmount>
+    <PaymentExecutionTime>2002-05-30T09:00:00</PaymentExecutionTime>
+    <PaymentMethod>BLIK</PaymentMethod>
+    <PaymentStatus>Paid</PaymentStatus>
+    <ReservationId>1</ReservationId>
+    <RoomReservations>
+      <RoomReservation>
+        <RoomReservationId>1</RoomReservationId>
+        <StartDate>2002-05-31T16:00:00</StartDate>
+        <EndDate>2002-06-02T11:00:00</EndDate>
+        <NumberOfGuests>1</NumberOfGuests>
+        <BreakfastForHowMany>1</BreakfastForHowMany>
+        <DinnersForHowMany>1</DinnersForHowMany>
+        <LunchesForHowMany>1</LunchesForHowMany>
+        <Room>
+          <RoomId>1</RoomId>
+          <BedQuantity>1</BedQuantity>
+          <MaxOccupancy>2</MaxOccupancy>
+          <PricePerNight>333.00</PricePerNight>
+          <RoomNumber>Bajka</RoomNumber>
+          <RoomStandard>Premium</RoomStandard>
+        </Room>
+      </RoomReservation>
+    </RoomReservations>
+  </Reservation>
+</Reservations>

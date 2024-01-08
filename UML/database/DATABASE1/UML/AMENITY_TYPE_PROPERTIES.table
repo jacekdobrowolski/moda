@@ -167,19 +167,6 @@
       </schema>
       <systemGenerated>true</systemGenerated>
     </index>
-    <index>
-      <name>AMENITY_TYPE_PROPERTIES_P_IDX</name>
-      <columnExpressions>
-        <columnExpression>
-          <expressionSource>PROPERTY_ID</expressionSource>
-        </columnExpression>
-      </columnExpressions>
-      <indexType>NORMAL</indexType>
-      <schema>
-        <name>UML</name>
-      </schema>
-      <systemGenerated>false</systemGenerated>
-    </index>
   </indexes>
   <properties>
     <entry>
