@@ -8,7 +8,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">8</value>
+            <value class="java.lang.String">7</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -25,16 +25,16 @@
       </properties>
     </column>
     <column>
-      <name>AMENITY_TYPE_ID</name>
+      <name>AMENITY_TYPE_CD</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>precision</key>
-            <value class="java.lang.String">4</value>
+            <key>size</key>
+            <value class="java.lang.Long">5</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -51,7 +51,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">7</value>
+            <value class="java.lang.String">6</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -69,10 +69,10 @@
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION12</name>
+      <name>AMENITIES_AME_TYP_FK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_TYPE_ID</name>
+          <name>AMENITY_TYPE_CD</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>AMENITIES</name>
             <schemaName>UML</schemaName>
@@ -95,7 +95,7 @@
       </referenceID>
     </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION9</name>
+      <name>AMENITIES_HOTEL_FK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>HOTEL_ID</name>
@@ -152,7 +152,7 @@
       <name>AMENITIES_AMENITY_TYPE_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>AMENITY_TYPE_ID</expressionSource>
+          <expressionSource>AMENITY_TYPE_CD</expressionSource>
         </columnExpression>
       </columnExpressions>
       <indexType>NORMAL</indexType>

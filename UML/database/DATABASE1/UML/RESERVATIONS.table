@@ -50,12 +50,12 @@
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>precision</key>
-            <value class="java.lang.String">3</value>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -71,12 +71,12 @@
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>precision</key>
-            <value class="java.lang.String">3</value>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -93,7 +93,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">9</value>
+            <value class="java.lang.String">7</value>
           </entry>
           <entry>
             <key>scale</key>
@@ -129,8 +129,18 @@
     </column>
   </columns>
   <constraints>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>RESERVATIONS_PAY_METHOD_CHK</name>
+      <checkCondition>PAYMENT_METHOD IN (&apos;OnSite&apos;, &apos;BankTransfer&apos;, &apos;BLIK&apos;, &apos;CreditCard&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>RESERVATIONS_PAY_STATUS_CHK</name>
+      <checkCondition>PAYMENT_STATUS IN (&apos;UnPaid&apos;, &apos;Paid&apos;, &apos;Processing&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>RESERVATIONS_FK1</name>
+      <name>RESERVATIONS_USER_FK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>USER_ID</name>
@@ -148,58 +158,6 @@
         <name>USERS_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>USERS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>RESERVATIONS_FK2</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PAYMENT_STATUS</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>PAYMENT_STATUS_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>PAYMENT_STATUS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>RESERVATIONS_FK3</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PAYMENT_METHOD</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>PAYMENT_METHOD_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>PAYMENT_METHODS</name>
           <schemaName>UML</schemaName>
           <type>TABLE</type>
         </parent>

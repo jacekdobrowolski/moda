@@ -3,16 +3,16 @@
   <name>PROPERTIES</name>
   <columns>
     <column>
-      <name>PROPERTY_ID</name>
+      <name>PROPERTY_CD</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>precision</key>
-            <value class="java.lang.String">5</value>
+            <key>size</key>
+            <value class="java.lang.Long">5</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <default class="java.lang.String">PROPERTY_ID_SEQ.NEXTVAL</default>
@@ -51,11 +51,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">20</value>
+            <value class="java.lang.Long">1</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
+          <typeName>CHAR</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -72,11 +72,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Integer">1</value>
+            <value class="java.lang.Long">1</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
+          <typeName>CHAR</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -89,11 +89,21 @@
     </column>
   </columns>
   <constraints>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>PROPERTIES_DATA_TYPE_CHK</name>
+      <checkCondition>DATA_TYPE IN (&apos;T&apos;,  &apos;N&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>PROPERTIES_OPT_CHK</name>
+      <checkCondition>OPTIONAL IN (&apos;Y&apos;, &apos;N&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>PROPERTIES_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PROPERTY_ID</name>
+          <name>PROPERTY_CD</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>PROPERTIES</name>
             <schemaName>UML</schemaName>
@@ -105,7 +115,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>PROPERTIES_PK_IDX</name>
+        <name>PROPERTIES_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>PROPERTIES</name>
           <schemaName>UML</schemaName>
@@ -115,23 +125,53 @@
         <type>INDEX</type>
       </indexID>
     </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>PROPERTIES_CHK1</name>
-      <checkCondition>DATA_TYPE IN (&apos;VARCHAR2&apos;,  &apos;NUMBER&apos;)</checkCondition>
+    <constraint class="oracle.javatools.db.UniqueConstraint">
+      <name>PROPERTIES_NAME_UK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>PROPERTY_NAME</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>PROPERTIES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
       <enabled>true</enabled>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>PROPERTIES_CHK2</name>
-      <checkCondition>OPTIONAL IN (&apos;Y&apos;, &apos;N&apos;)</checkCondition>
-      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>PROPERTIES_UK1</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>PROPERTIES</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
     </constraint>
   </constraints>
   <indexes>
     <index>
-      <name>PROPERTIES_PK_IDX</name>
+      <name>PROPERTIES_PK</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>PROPERTY_ID</expressionSource>
+          <expressionSource>PROPERTY_CD</expressionSource>
+          <orderType>ASC</orderType>
+        </columnExpression>
+      </columnExpressions>
+      <indexType>UNIQUE</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>PROPERTIES_UK1</name>
+      <columnExpressions>
+        <columnExpression>
+          <expressionSource>PROPERTY_NAME</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>

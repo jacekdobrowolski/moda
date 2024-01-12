@@ -8,7 +8,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">8</value>
+            <value class="java.lang.String">7</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -24,16 +24,16 @@
       </properties>
     </column>
     <column>
-      <name>PROPERTY_ID</name>
+      <name>PROPERTY_CD</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>precision</key>
-            <value class="java.lang.String">5</value>
+            <key>size</key>
+            <value class="java.lang.Long">5</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -45,16 +45,16 @@
       </properties>
     </column>
     <column>
-      <name>AMENITY_TYPE_ID</name>
+      <name>AMENITY_TYPE_CD</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <key>size</key>
+            <value class="java.lang.Long">5</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -89,7 +89,7 @@
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>PROPERTY_VALUES_FK1</name>
+      <name>PROPERTY_VALUES_AMENITY_FK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>AMENITY_ID</name>
@@ -115,10 +115,10 @@
       </referenceID>
     </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>PROPERTY_VALUES_FK2</name>
+      <name>PROPERTY_VALUES_AME_TYP_FK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PROPERTY_ID</name>
+          <name>PROPERTY_CD</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>PROPERTY_VALUES</name>
             <schemaName>UML</schemaName>
@@ -128,7 +128,7 @@
           <type>COLUMN</type>
         </columnID>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_TYPE_ID</name>
+          <name>AMENITY_TYPE_CD</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>PROPERTY_VALUES</name>
             <schemaName>UML</schemaName>
@@ -164,7 +164,7 @@
           <type>COLUMN</type>
         </columnID>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PROPERTY_ID</name>
+          <name>PROPERTY_CD</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>PROPERTY_VALUES</name>
             <schemaName>UML</schemaName>
@@ -174,7 +174,7 @@
           <type>COLUMN</type>
         </columnID>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_TYPE_ID</name>
+          <name>AMENITY_TYPE_CD</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>PROPERTY_VALUES</name>
             <schemaName>UML</schemaName>
@@ -186,7 +186,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>PROPERTY_VALUES_PK_IDX</name>
+        <name>PROPERTY_VALUES_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>PROPERTY_VALUES</name>
           <schemaName>UML</schemaName>
@@ -202,7 +202,10 @@
       <name>PROPERTY_VALUES_AT_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>AMENITY_TYPE_ID</expressionSource>
+          <expressionSource>PROPERTY_CD</expressionSource>
+        </columnExpression>
+        <columnExpression>
+          <expressionSource>AMENITY_TYPE_CD</expressionSource>
         </columnExpression>
       </columnExpressions>
       <indexType>NORMAL</indexType>
@@ -212,35 +215,22 @@
       <systemGenerated>false</systemGenerated>
     </index>
     <index>
-      <name>PROPERTY_VALUES_PK_IDX</name>
+      <name>PROPERTY_VALUES_PK</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>AMENITY_ID</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
         <columnExpression>
-          <expressionSource>PROPERTY_ID</expressionSource>
+          <expressionSource>PROPERTY_CD</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
         <columnExpression>
-          <expressionSource>AMENITY_TYPE_ID</expressionSource>
+          <expressionSource>AMENITY_TYPE_CD</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
       </columnExpressions>
       <indexType>UNIQUE</indexType>
-      <schema>
-        <name>UML</name>
-      </schema>
-      <systemGenerated>true</systemGenerated>
-    </index>
-    <index>
-      <name>PROPERTY_VALUES_PROPERTY_IDX</name>
-      <columnExpressions>
-        <columnExpression>
-          <expressionSource>PROPERTY_ID</expressionSource>
-        </columnExpression>
-      </columnExpressions>
-      <indexType>NORMAL</indexType>
       <schema>
         <name>UML</name>
       </schema>
