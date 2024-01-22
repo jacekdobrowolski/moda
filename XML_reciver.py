@@ -10,7 +10,8 @@ class DB_connection:
     def __init__(
         self, hostname: str, port: int, sid: str, user: str, password: str
     ) -> None:
-        dsn = cx_Oracle.makedsn(hostname, port, sid)  # or service_name='servicename'
+        # or service_name='servicename'
+        dsn = cx_Oracle.makedsn(hostname, port, sid)
         self.conn = cx_Oracle.connect(user=user, password=password, dsn=dsn)
 
     def query_database(self, query, params=None):
@@ -100,11 +101,13 @@ if __name__ == "__main__":
         password="assword",
     )
     hotel_id = input("Podaj ID hotelu: ")
-    start_date = input("Podaj date (rrrr-mm-dd) od której chcesz widziec rezerwacje: ")
+    start_date = input(
+        "Podaj date (rrrr-mm-dd) od której chcesz widziec rezerwacje: ")
     xsd_file_path = "UML/MODA3_XMLSchema.xsd"
     params = (start_date, hotel_id)
 
-    query = db_conn.get_query_from_file("Eksport/EksportSelectWithParameters.sql")
+    query = db_conn.get_query_from_file(
+        "Eksport/EksportSelectWithParameters.sql")
     # query = db_conn.get_query_from_file("Eksport/EksportSelectFull.sql")
 
     out = db_conn.query_database(query, params)
