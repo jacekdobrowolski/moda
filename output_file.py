@@ -1015,7 +1015,7 @@ class PaymentMethod(str, Enum):
 
 class PaymentStatus(str, Enum):
     PAID='Paid'
-    UNPAID='Unpaid'
+    UNPAID='UnPaid'
     PROCESSING='Processing'
 
 
@@ -1493,7 +1493,7 @@ class ReservationType(GeneratedsSuper):
                 self.gds_collector_.add_message('Value "%(value)s"%(lineno)s is not of the correct base simple type (str)' % {"value": value, "lineno": lineno, })
                 return False
             value = value
-            enumerations = ['Paid', 'Unpaid', 'Processing']
+            enumerations = ['Paid', 'UnPaid', 'Processing']
             if value not in enumerations:
                 lineno = self.gds_get_node_lineno_()
                 self.gds_collector_.add_message('Value "%(value)s"%(lineno)s does not match xsd enumeration restriction on PaymentStatus' % {"value" : encode_str_2_3(value), "lineno": lineno} )

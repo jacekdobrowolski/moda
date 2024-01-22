@@ -3,6 +3,8 @@ from lxml import etree
 import cx_Oracle
 from io import StringIO
 
+import output_file
+
 
 class DB_connection:
     def __init__(
@@ -57,24 +59,18 @@ class DB_connection:
 
     @staticmethod
     def read_xml(file_path):
-        # Parse the XML file
         tree = ET.parse(file_path)
         root = tree.getroot()
 
-        # Define the namespace
         ns = {"ns": "http://www.example.org"}
 
-        # Iterate through each reservation
         for reservation in root.findall("ns:Reservation", ns):
-            # Find user details
             user = reservation.find("ns:User", ns)
             first_name = user.find("ns:FirstName", ns).text
             last_name = user.find("ns:LastName", ns).text
 
-            # Print user details
             print(f"User: {first_name} {last_name}")
 
-            # Find and print other details of reservation
             payment_amount = reservation.find("ns:PaymentAmount", ns).text
             print(f"Payment Amount: {payment_amount}")
 
@@ -103,11 +99,19 @@ if __name__ == "__main__":
         user="MODA3",
         password="assword",
     )
-
+    xsd_file_path = "UML/MODA3_XMLSchema.xsd"
     params = ("2024-01-02", 1)
-    # query = get_query_from_file("Eksport/EksportSelectWithParameters.sql")
-    query = db_conn.get_query_from_file("Eksport/EksportSelectFull.sql")
 
-    out = db_conn.query_database(query)
+    query = db_conn.get_query_from_file("Eksport/EksportSelectWithParameters.sql")
+    # query = db_conn.get_query_from_file("Eksport/EksportSelectFull.sql")
+
+    out = db_conn.query_database(query, params)
     print(out)
-    db_conn.validate_xml_from_query(out, "UML/MODA3_XMLSchema.xsd")
+
+    if db_conn.validate_xml_from_query(out, xsd_file_path):
+        print(f"XML matches the schema from {xsd_file_path}")
+    else:
+        print(f"XML doesnt match the schema from {xsd_file_path}")
+
+    reservations = output_file.parseString(out)
+    print(reservations.Reservation)
