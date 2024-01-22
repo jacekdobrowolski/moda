@@ -8,13 +8,14 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <value class="java.lang.String">7</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
+      <default class="java.lang.String">AMENITY_ID_SEQ.NEXTVAL</default>
       <notNull>true</notNull>
       <properties>
         <entry>
@@ -24,16 +25,16 @@
       </properties>
     </column>
     <column>
-      <name>AMENITY_TYPE_ID</name>
+      <name>AMENITY_TYPE_CD</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
-            <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <key>size</key>
+            <value class="java.lang.Long">5</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -50,7 +51,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <value class="java.lang.String">6</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -67,37 +68,11 @@
     </column>
   </columns>
   <constraints>
-    <constraint class="oracle.javatools.db.PKConstraint">
-      <name>AMENITIES_PK</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>AMENITIES</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>AMENITIES_PK_IDX</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>AMENITIES</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>INDEX</type>
-      </indexID>
-    </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION12</name>
+      <name>AMENITIES_AME_TYP_FK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>AMENITY_TYPE_ID</name>
+          <name>AMENITY_TYPE_CD</name>
           <parent class="oracle.javatools.db.NameBasedID">
             <name>AMENITIES</name>
             <schemaName>UML</schemaName>
@@ -120,7 +95,7 @@
       </referenceID>
     </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>ASSOCIATION9</name>
+      <name>AMENITIES_HOTEL_FK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>HOTEL_ID</name>
@@ -135,7 +110,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>HOTELS_PK</name>
+        <name>HOTELS_PK_IDX</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>HOTELS</name>
           <schemaName>UML</schemaName>
@@ -145,13 +120,39 @@
         <type>CONSTRAINT</type>
       </referenceID>
     </constraint>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>AMENITIES_PK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>AMENITY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>AMENITIES</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>AMENITIES_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>AMENITIES</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
+    </constraint>
   </constraints>
   <indexes>
     <index>
       <name>AMENITIES_AMENITY_TYPE_IDX</name>
       <columnExpressions>
         <columnExpression>
-          <expressionSource>AMENITY_TYPE_ID</expressionSource>
+          <expressionSource>AMENITY_TYPE_CD</expressionSource>
         </columnExpression>
       </columnExpressions>
       <indexType>NORMAL</indexType>
@@ -174,7 +175,7 @@
       <systemGenerated>false</systemGenerated>
     </index>
     <index>
-      <name>AMENITIES_PK_IDX</name>
+      <name>AMENITIES_PK</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>AMENITY_ID</expressionSource>

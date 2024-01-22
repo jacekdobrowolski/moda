@@ -8,13 +8,14 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <value class="java.lang.String">7</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
+      <default class="java.lang.String">USER_ID_SEQ.NEXTVAL</default>
       <notNull>true</notNull>
       <properties>
         <entry>
@@ -113,11 +114,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">20</value>
+            <value class="java.lang.Integer">1</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
+          <typeName>CHAR</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>false</notNull>
@@ -221,13 +222,13 @@
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>USERS_CHK1</name>
-      <checkCondition>Gender IN (&apos;Female&apos;, &apos;Male&apos;)</checkCondition>
+      <name>USERS_EMAIL_CHK</name>
+      <checkCondition>REGEXP_LIKE(Email, &apos;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&apos;)</checkCondition>
       <enabled>true</enabled>
     </constraint>
     <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>USERS_CHK2</name>
-      <checkCondition>REGEXP_LIKE(Email, &apos;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&apos;)</checkCondition>
+      <name>USERS_GENDER_CHK</name>
+      <checkCondition>Gender IN (&apos;F&apos;, &apos;M&apos;)</checkCondition>
       <enabled>true</enabled>
     </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
@@ -257,7 +258,7 @@
       </indexID>
     </constraint>
     <constraint class="oracle.javatools.db.UniqueConstraint">
-      <name>USERS_UK1</name>
+      <name>USERS_EMAIL_UK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>EMAIL</name>
@@ -269,6 +270,22 @@
           <schemaName>UML</schemaName>
           <type>COLUMN</type>
         </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>USERS_UK1</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>USERS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>INDEX</type>
+      </indexID>
+    </constraint>
+    <constraint class="oracle.javatools.db.UniqueConstraint">
+      <name>USERS_PHONE_UK</name>
+      <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>PHONE_NUMBER</name>
           <parent class="oracle.javatools.db.NameBasedID">
@@ -282,7 +299,7 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>USERS_UK1</name>
+        <name>USERS_UK2</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>USERS</name>
           <schemaName>UML</schemaName>
@@ -315,6 +332,16 @@
           <expressionSource>EMAIL</expressionSource>
           <orderType>ASC</orderType>
         </columnExpression>
+      </columnExpressions>
+      <indexType>UNIQUE</indexType>
+      <schema>
+        <name>UML</name>
+      </schema>
+      <systemGenerated>true</systemGenerated>
+    </index>
+    <index>
+      <name>USERS_UK2</name>
+      <columnExpressions>
         <columnExpression>
           <expressionSource>PHONE_NUMBER</expressionSource>
           <orderType>ASC</orderType>

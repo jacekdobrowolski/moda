@@ -8,13 +8,14 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <value class="java.lang.String">7</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
+      <default class="java.lang.String">RESERVATION_ID_SEQ.NEXTVAL</default>
       <notNull>true</notNull>
       <properties>
         <entry>
@@ -29,7 +30,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">10</value>
+            <value class="java.lang.String">7</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -92,7 +93,7 @@
         <attributeValues>
           <entry>
             <key>precision</key>
-            <value class="java.lang.String">9</value>
+            <value class="java.lang.String">7</value>
           </entry>
           <entry>
             <key>scale</key>
@@ -118,7 +119,7 @@
           <typeName>DATE</typeName>
         </dataTypeID>
       </dataTypeUsage>
-      <notNull>true</notNull>
+      <notNull>false</notNull>
       <properties>
         <entry>
           <key>Comment</key>
@@ -128,6 +129,42 @@
     </column>
   </columns>
   <constraints>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>RESERVATIONS_PAY_METHOD_CHK</name>
+      <checkCondition>PAYMENT_METHOD IN (&apos;OnSite&apos;, &apos;BankTransfer&apos;, &apos;BLIK&apos;, &apos;CreditCard&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
+    <constraint class="oracle.javatools.db.CheckConstraint">
+      <name>RESERVATIONS_PAY_STATUS_CHK</name>
+      <checkCondition>PAYMENT_STATUS IN (&apos;UnPaid&apos;, &apos;Paid&apos;, &apos;Processing&apos;)</checkCondition>
+      <enabled>true</enabled>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>RESERVATIONS_USER_FK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>USER_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>RESERVATIONS</name>
+            <schemaName>UML</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>UML</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>USERS_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>USERS</name>
+          <schemaName>UML</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>UML</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>RESERVATIONS_PK</name>
       <columnIDs>
@@ -153,42 +190,6 @@
         <schemaName>UML</schemaName>
         <type>INDEX</type>
       </indexID>
-    </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>RESERVATIONS_FK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>USER_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>RESERVATIONS</name>
-            <schemaName>UML</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>UML</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>USERS_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>USERS</name>
-          <schemaName>UML</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>UML</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>RESERVATIONS_CHK1</name>
-      <checkCondition>PAYMENT_STATUS IN (&apos;Paid&apos;, &apos;Unpaid&apos;, &apos;Processing&apos;)</checkCondition>
-      <enabled>true</enabled>
-    </constraint>
-    <constraint class="oracle.javatools.db.CheckConstraint">
-      <name>RESERVATIONS_CHK2</name>
-      <checkCondition> PAYMENT_METHOD IN (&apos;OnSite&apos;, &apos;BankTransfer&apos;, &apos;CreditCard&apos;, &apos;BLIK&apos;)</checkCondition>
-      <enabled>true</enabled>
     </constraint>
   </constraints>
   <indexes>
