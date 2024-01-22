@@ -38,7 +38,7 @@ SELECT XMLSERIALIZE(DOCUMENT
                              o.ROOM_ID as "RoomId",
                              o.BED_QUANTITY as "BedQuantity",
                              o.MAX_OCCUPANCY as "MaxOccupancy",
-                             o.PRICE_PER_NIGHT as "PricePerNight",
+                             LTRIM(TO_CHAR(o.PRICE_PER_NIGHT, '9999D99', 'NLS_NUMERIC_CHARACTERS = ''.,''')) as "PricePerNight",
                              o.ROOM_NUMBER as "RoomNumber",
                              o.ROOM_STANDARD as "RoomStandard"
                              )
