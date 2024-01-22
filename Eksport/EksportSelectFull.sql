@@ -12,7 +12,7 @@ SELECT XMLSERIALIZE(DOCUMENT
                      )
                    ),
                    XMLFOREST(
-                   r.PAYMENT_AMOUNT as "PaymentAmount", 
+                   LTRIM(TO_CHAR(r.PAYMENT_AMOUNT, '99999D99', 'NLS_NUMERIC_CHARACTERS = ''.,''')) as "PaymentAmount",  
                    CASE 
                      WHEN r.PAYMENT_EXECUTION_TIME IS NOT NULL 
                      THEN TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'YYYY-MM-DD') || 'T' || TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'HH24:MI:SS')
