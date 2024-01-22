@@ -42,7 +42,7 @@ SELECT XMLSERIALIZE(DOCUMENT
                          ) FROM ROOMS o WHERE o.ROOM_ID = rr.ROOM_ID)
                        ) 
                      )
-                   ) FROM ROOM_RESERVATIONS rr WHERE rr.RESERVATION_ID = r.RESERVATION_ID AND rr.START_DATE >= '%s')
+                   ) FROM ROOM_RESERVATIONS rr WHERE rr.RESERVATION_ID = r.RESERVATION_ID AND rr.START_DATE >= :1)
                  )
                )
              )
@@ -51,4 +51,4 @@ FROM RESERVATIONS r JOIN USERS u ON r.USER_ID = u.USER_ID
 WHERE RESERVATION_ID IN 
     (SELECT RESERVATION_ID 
     FROM ROOM_RESERVATIONS rr JOIN ROOMS o ON rr.ROOM_ID = o.ROOM_ID 
-    WHERE HOTEL_ID = %d AND rr.START_DATE >= '%s');
+    WHERE HOTEL_ID = :2 AND rr.START_DATE >= :1)
