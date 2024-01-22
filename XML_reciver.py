@@ -3,7 +3,7 @@ from lxml import etree
 import cx_Oracle
 from io import StringIO
 
-import output_file
+import reservations_parser
 
 
 class DB_connection:
@@ -112,6 +112,6 @@ if __name__ == "__main__":
 
     db_conn.validate_xml_from_query(out, xsd_file_path)
 
-    reservations = output_file.parseString(out, silence=True)
+    reservations = reservations_parser.parseString(out, silence=True)
     for res in reservations.Reservation:
         print(res)
