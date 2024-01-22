@@ -13,7 +13,7 @@ SELECT XMLSERIALIZE(DOCUMENT
                    ),
                    XMLFOREST(
                    r.PAYMENT_AMOUNT as "PaymentAmount", 
-                   TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'YYYY-MM-DD HH24:MI:SS') as "PaymentExecutionTime", 
+                   TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'YYYY-MM-DD') || 'T' || TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'HH24:MI:SS') as "PaymentExecutionTime", 
                    r.PAYMENT_METHOD as "PaymentMethod", 
                    r.PAYMENT_STATUS as "PaymentStatus", 
                    r.RESERVATION_ID as "ReservationId"),
@@ -21,8 +21,8 @@ SELECT XMLSERIALIZE(DOCUMENT
                      XMLAGG(
                        XMLELEMENT("RoomReservation",
                          XMLFOREST(
-                         TO_CHAR(rr.START_DATE, 'YYYY-MM-DD HH24:MI:SS') as "StartDate",
-                         TO_CHAR(rr.END_DATE, 'YYYY-MM-DD HH24:MI:SS') as "EndDate",
+                         TO_CHAR(rr.START_DATE, 'YYYY-MM-DD') || 'T' || TO_CHAR(rr.START_DATE, 'HH24:MI:SS') as "StartDate",
+                         TO_CHAR(rr.END_DATE, 'YYYY-MM-DD') || 'T' || TO_CHAR(rr.END_DATE, 'HH24:MI:SS') as "EndDate",
                          rr.NUMBER_OF_GUESTS as "NumberOfGuests",
                          rr.BREAKFAST_COUNT as "BreakfastCount",
                          rr.DINNER_COUNT as "DinnerCount",
