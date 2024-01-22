@@ -18,11 +18,11 @@ class DB_connection:
         else:
             cursor.execute(query)
 
-        result = cursor.fetchall()
-        for row in result:
-            print(row)
-
+        result = cursor.fetchone()
+        
         cursor.close()
+
+        return result[0].read()
 
     def close_connection(self):
         self.conn.close()
@@ -79,6 +79,9 @@ class DB_connection:
 
 
 if __name__ == "__main__":
+    #use this function to locate oracle client libraries
+    #cx_Oracle.init_oracle_client(lib_dir=r"C:\Programowanie\Narzedzia\Oracle\instantclient_21_12")
+
     db_conn = DB_connection(
         hostname="ora2.ia.pw.edu.pl",
         port=1521,
