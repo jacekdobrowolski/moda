@@ -1,6 +1,7 @@
 import xml.etree.ElementTree as ET
 from lxml import etree
 import cx_Oracle
+from io import StringIO
 
 
 class DB_connection:
@@ -19,7 +20,7 @@ class DB_connection:
             cursor.execute(query)
 
         result = cursor.fetchone()
-        
+
         cursor.close()
 
         return result[0].read()
@@ -35,7 +36,7 @@ class DB_connection:
         return query
 
     @staticmethod
-    def validate_xml(xml_path, xsd_path):
+    def validate_xml_from_file(xml_path, xsd_path):
         # Load the schema
         with open(xsd_path, "rb") as schema_file:
             schema_root = etree.XML(schema_file.read())
@@ -77,10 +78,23 @@ class DB_connection:
             payment_amount = reservation.find("ns:PaymentAmount", ns).text
             print(f"Payment Amount: {payment_amount}")
 
+    @staticmethod
+    def validate_xml_from_query(xml_string, xsd_file_path):
+        with open(xsd_file_path, "r") as xsd_file:
+            xsd_tree = etree.parse(xsd_file)
+        xsd_schema = etree.XMLSchema(xsd_tree)
+
+        try:
+            xml_doc = etree.parse(StringIO(xml_string))
+            xsd_schema.assertValid(xml_doc)
+            return True
+        except etree.XMLSchemaError as e:
+            return str(e)
+
 
 if __name__ == "__main__":
-    #use this function to locate oracle client libraries
-    #cx_Oracle.init_oracle_client(lib_dir=r"C:\Programowanie\Narzedzia\Oracle\instantclient_21_12")
+    # use this function to locate oracle client libraries
+    # cx_Oracle.init_oracle_client(lib_dir=r"C:\Programowanie\Narzedzia\Oracle\instantclient_21_12")
 
     db_conn = DB_connection(
         hostname="ora2.ia.pw.edu.pl",
@@ -96,6 +110,4 @@ if __name__ == "__main__":
 
     out = db_conn.query_database(query)
     print(out)
-    # Replace 'your_file.xml' with the path to your XML file
-    # validate_xml("UML/MODA3_XML.xml", "UML/MODA3_XMLSchema.xsd")
-    # read_xml("UML/MODA3_XML.xml")
+    db_conn.validate_xml_from_query(out, "UML/MODA3_XMLSchema.xsd")

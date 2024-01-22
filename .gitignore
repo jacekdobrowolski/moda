@@ -18,3 +18,4 @@ javadoc/
 cwallet.sso.lck
 
 # End of https://www.toptal.com/developers/gitignore/api/jdeveloper
+.env
