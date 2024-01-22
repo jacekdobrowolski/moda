@@ -83,9 +83,9 @@ class DB_connection:
         try:
             xml_doc = etree.parse(StringIO(xml_string))
             xsd_schema.assertValid(xml_doc)
-            return True
+            print(f"XML matches the schema from {xsd_file_path}")
         except etree.XMLSchemaError as e:
-            return str(e)
+            print(f"XML doesnt match the schema from {xsd_file_path}")
 
 
 if __name__ == "__main__":
@@ -99,19 +99,19 @@ if __name__ == "__main__":
         user="MODA3",
         password="assword",
     )
+    hotel_id = input("Podaj ID hotelu: ")
+    start_date = input("Podaj date (rrrr-mm-dd) od której chcesz widziec rezerwacje: ")
     xsd_file_path = "UML/MODA3_XMLSchema.xsd"
-    params = ("2024-01-02", 1)
+    params = (start_date, hotel_id)
 
     query = db_conn.get_query_from_file("Eksport/EksportSelectWithParameters.sql")
     # query = db_conn.get_query_from_file("Eksport/EksportSelectFull.sql")
 
     out = db_conn.query_database(query, params)
-    print(out)
+    # print(out)
 
-    if db_conn.validate_xml_from_query(out, xsd_file_path):
-        print(f"XML matches the schema from {xsd_file_path}")
-    else:
-        print(f"XML doesnt match the schema from {xsd_file_path}")
+    db_conn.validate_xml_from_query(out, xsd_file_path)
 
-    reservations = output_file.parseString(out)
-    print(reservations.Reservation)
+    reservations = output_file.parseString(out, silence=True)
+    for res in reservations.Reservation:
+        print(res)
