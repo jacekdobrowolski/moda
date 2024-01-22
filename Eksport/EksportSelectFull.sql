@@ -13,7 +13,11 @@ SELECT XMLSERIALIZE(DOCUMENT
                    ),
                    XMLFOREST(
                    r.PAYMENT_AMOUNT as "PaymentAmount", 
-                   TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'YYYY-MM-DD') || 'T' || TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'HH24:MI:SS') as "PaymentExecutionTime", 
+                   CASE 
+                     WHEN r.PAYMENT_EXECUTION_TIME IS NOT NULL 
+                     THEN TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'YYYY-MM-DD') || 'T' || TO_CHAR(r.PAYMENT_EXECUTION_TIME, 'HH24:MI:SS')
+                     ELSE NULL
+                   END as "PaymentExecutionTime",
                    r.PAYMENT_METHOD as "PaymentMethod", 
                    r.PAYMENT_STATUS as "PaymentStatus", 
                    r.RESERVATION_ID as "ReservationId"),
